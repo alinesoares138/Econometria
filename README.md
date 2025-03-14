@@ -31,3 +31,5 @@ O coeficiente de determinação, conhecido como R², mede a proporção da varia
 \[
 R² = 1 - (erro do modelo / variação total dos dados)​
 \]
+
+(Ver 1_arquivo)
