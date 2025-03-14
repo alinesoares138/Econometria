@@ -7,7 +7,7 @@ summary(modelo)
 
 
 summary(modelo)$r.squared
-Ou, manualmente:
+#Ou, manualmente:
   y_pred <- predict(modelo)
 SQT <- sum((df$y - mean(df$y))^2)  # Variação total de Y
 SQR <- sum((df$y - y_pred)^2)  # Erro do modelo
