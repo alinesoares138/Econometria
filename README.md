@@ -1,4 +1,10 @@
 # Econometria
+## Tópicos do projeto:
+1. Regressão Linear
+2. Regressão Múltipla
+3. Testes de Hipóteses
+
+# Regressão Linear
 
 A **regressão linear** é um método estatístico para modelar a relação entre uma variável dependente \( Y \) e uma ou mais variáveis independentes \( X \). 
 Ela busca ajustar uma equação da forma:  
