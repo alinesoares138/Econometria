@@ -1,4 +1,7 @@
 
+# Variáveis instrumentais e 2SLS (OU Mínimos Quadrados em Dois Estágios)
+Objetivo: Entender o efeito causal do abuso de álcool (abuse) sobre empregabilidade (employ)
+
 #1-Importando pacote
 library(AER) #para rodar 2SLS
 
@@ -7,7 +10,15 @@ iv_model <- ivreg(
   employ ~ abuse | beertax + cigtax + ethanol + mothalc + fathalc + livealc,
   data = alcohol
 )
-summary(iv_model, diagnostics = TRUE)
+
+Onde, os instrumentos significam:
+***beertax: imposto estadual sobre cerveja ($ por galão).
+***cigtax: imposto estadual sobre cigarro (centavos por maço).
+***ethanol: consumo per capita de etanol no estado.
+***mothalc: =1 se a mãe do indivíduo é alcoólatra.
+***fathalc: =1 se o pai do indivíduo é alcoólatra.
+***livealc: =1 se o indivíduo já viveu com um alcoólatra.
+***summary(iv_model, diagnostics = TRUE)
 
 3-Resultado
 Intercepto: 0.89994 → Probabilidade de estar empregado quando abuse = 0 e instrumentos no nível médio.
