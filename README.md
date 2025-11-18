@@ -1,8 +1,8 @@
 # Econometria
 ## Tópicos do projeto:
 1. Regressão Linear
-2. Regressão Múltipla
-3. Testes de Hipóteses
+2. Teste RESET 
+3. Variáveis Instrumentais / 2SLS
 
 # Regressão Linear
 
