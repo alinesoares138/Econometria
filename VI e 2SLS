@@ -1,25 +1,40 @@
 
-# Variáveis Instrumentais e 2SLS com dados de Cross-section / Painel
-
-Base de dados: Microdados do Exame Nacional de Desempenho dos Estudantes - Enade
-Fonte: https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/microdados/enade
-Planilha: microdados2023_arq3 
-
-Objetivo: explicar a relação da Nota Bruta da prova (NT_GER) com 
-(QE_I21) o fato do estudante ter alguém em sua família concluiu
-um curso superior.
+# Variáveis Instrumentais e 2SLS com dados 
+Objetivo: Entender o efeito causal do abuso de álcool (abuse) sobre empregabilidade (employ)
 
 # Etapas
-#1.Importando dados
-
-library(readr) #para ler o arquivo de texto
-microdados2023_arq27 <- read_delim("microdados2023_arq27.txt", 
-    delim = ";", escape_double = FALSE, trim_ws = TRUE)
-
-microdados2023_arq3 <- read_delim("microdados2023_arq3.txt", 
-    delim = ";", escape_double = FALSE, trim_ws = TRUE)
+#1.Importando dados / pacotes
+  
+install.packages("wooldridge")
+library(wooldridge)
 
 install.packages("AER") #para usar função de VI
 library(AER) 
 
-2.
+#2. Definindo o modelo de regressão
+
+data('alcohol')
+
+#variável dependente / endógena = abuse
+#variável independente / exógena = employ
+
+reg_simples <- lm(employ ~ abuse, data = alcohol )
+summary(reg_simples)
+
+Call:
+lm(formula = employ ~ abuse, data = alcohol)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.90099  0.09901  0.09901  0.09901  0.12731 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  0.900995   0.003214 280.341  < 2e-16 ***
+abuse       -0.028305   0.010206  -2.773  0.00556 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.3023 on 9820 degrees of freedom
+Multiple R-squared:  0.0007826,	Adjusted R-squared:  0.0006809 
+F-statistic: 7.691 on 1 and 9820 DF,  p-value: 0.005559
