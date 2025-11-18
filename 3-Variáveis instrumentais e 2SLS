@@ -11,21 +11,21 @@ iv_model <- ivreg(
   data = alcohol
 )
 
-Onde, os instrumentos significam:
-***beertax: imposto estadual sobre cerveja ($ por galão).
-***cigtax: imposto estadual sobre cigarro (centavos por maço).
-***ethanol: consumo per capita de etanol no estado.
-***mothalc: =1 se a mãe do indivíduo é alcoólatra.
-***fathalc: =1 se o pai do indivíduo é alcoólatra.
-***livealc: =1 se o indivíduo já viveu com um alcoólatra.
-***summary(iv_model, diagnostics = TRUE)
+Onde, os instrumentos são:
+a)beertax: imposto estadual sobre cerveja ($ por galão).
+b)cigtax: imposto estadual sobre cigarro (centavos por maço).
+c)ethanol: consumo per capita de etanol no estado.
+d)mothalc: =1 se a mãe do indivíduo é alcoólatra.
+e)fathalc: =1 se o pai do indivíduo é alcoólatra.
+f)livealc: =1 se o indivíduo já viveu com um alcoólatra.
+g)summary(iv_model, diagnostics = TRUE)
 
 3-Resultado
 Intercepto: 0.89994 → Probabilidade de estar empregado quando abuse = 0 e instrumentos no nível médio.
 abuse: -0.01770, não significativo (p = 0.883) → Ao contrário do OLS, o efeito do abuso de álcool sobre empregabilidade não é estatisticamente significativo quando usamos instrumentos.
 Interpretando: depois de corrigir a possível endogeneidade com os instrumentos escolhidos, o efeito do abuso de álcool diminui e perde significância. Isso pode indicar que o OLS estava enviesado ou que os instrumentos não estão isolando bem o efeito causal.
 
-4-Diagnósticos
+4-Diagnóstico
 a) Instrumentos fracos (Weak instruments)
 Estatística: 11.919, p < 0.001 → significativa
 Interpretação: Existe evidência de que os instrumentos estão correlacionados com a variável endógena (abuse). Ou seja, não são instrumentos fracos.
