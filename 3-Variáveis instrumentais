@@ -1,0 +1,42 @@
+
+#1-Importando pacote
+library(AER) #para rodar 2SLS
+
+#2-Definindo modelo com variáveis instrumentais
+iv_model <- ivreg(
+  employ ~ abuse | beertax + cigtax + ethanol + mothalc + fathalc + livealc,
+  data = alcohol
+)
+summary(iv_model, diagnostics = TRUE)
+
+3-Resultado
+Intercepto: 0.89994 → Probabilidade de estar empregado quando abuse = 0 e instrumentos no nível médio.
+abuse: -0.01770, não significativo (p = 0.883) → Ao contrário do OLS, o efeito do abuso de álcool sobre empregabilidade não é estatisticamente significativo quando usamos instrumentos.
+Interpretando: depois de corrigir a possível endogeneidade com os instrumentos escolhidos, o efeito do abuso de álcool diminui e perde significância. Isso pode indicar que o OLS estava enviesado ou que os instrumentos não estão isolando bem o efeito causal.
+
+4-Diagnósticos
+a) Instrumentos fracos (Weak instruments)
+Estatística: 11.919, p < 0.001 → significativa
+Interpretação: Existe evidência de que os instrumentos estão correlacionados com a variável endógena (abuse). Ou seja, não são instrumentos fracos.
+
+b) Teste de endogeneidade (Wu-Hausman)
+Estatística: 0.008, p = 0.929 → não significativo
+Interpretação: Falhamos em rejeitar a hipótese nula de que abuse é exógeno. Ou seja, não há evidência de que OLS estivesse enviesado nesse caso. Isso explica por que o coeficiente OLS e IV são relativamente próximos.
+
+c) Teste de sobreidentificação (Sargan)
+Estatística: 27.318, p = 4.95e-05 → significativo
+Interpretação: Os instrumentos não parecem totalmente válidos. Algum(s) instrumento(s) podem estar correlacionados com o erro da equação estrutural (violando a exclusão).
+Isso indica que os instrumentos escolhidos podem não ser completamente apropriados para capturar apenas o efeito de abuse.
+
+d) R² e ajuste
+R² = 0.00067 → Muito baixo, mas esperado, porque employ é binário e o modelo tem apenas abuse como variável explicativa direta.
+Residual standard error = 0.3023 → Erro típico do modelo, próximo do OLS.
+
+5-Comparação
+| Modelo | Coef. abuse | Significância  |
+| ------ | ----------- | -------------- |
+| OLS    | -0.0283     | p = 0.00556 ** |
+| IV     | -0.0177     | p = 0.883      |
+
+O efeito do abuso diminuiu e não é mais significativo no IV.
+Isso mostra que, depois de controlar por endogeneidade com os instrumentos, o efeito direto do abuso de álcool sobre empregabilidade não é robusto.
