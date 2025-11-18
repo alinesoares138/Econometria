@@ -1,0 +1,18 @@
+
+#Teste de Erro de especificação / forma funcional do modelo
+
+library(lmtest) #para o teste reset
+
+resettest(reg_simples, power = 2:3, type = "fitted")
+
+Onde, as hipóteses do teste são:
+H₀ (nula): o modelo está corretamente especificado (sem omissão de variáveis importantes, linearidade adequada)
+H₁ (alternativa): há erro de especificação (variáveis omitidas ou não linearidade)
+
+RESULTADO 
+data:  reg_simples
+RESET = 0, df1 = 2, df2 = 9818, p-value = 1
+
+INTERPRETAÇÃO
+-Como p-valor é muito maior que 5, isso indica que não há evidência estatística de erro de especificação no modelo simples employ ~ abuse.
+-Mesmo sem erro de especificação estatístico, o efeito de abuse pode estar enviesado por variáveis omitidas (idade, educação, região, histórico familiar etc.).
