@@ -5,5 +5,21 @@ Base de dados: Microdados do Exame Nacional de Desempenho dos Estudantes - Enade
 Fonte: https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/microdados/enade
 Planilha: microdados2023_arq3 
 
+Objetivo: explicar a relação da Nota Bruta da prova (NT_GER) com 
+(QE_I21) o fato do estudante ter alguém em sua família concluiu
+um curso superior.
 
+# Etapas
+#1.Importando dados
 
+library(readr) #para ler o arquivo de texto
+microdados2023_arq27 <- read_delim("microdados2023_arq27.txt", 
+    delim = ";", escape_double = FALSE, trim_ws = TRUE)
+
+microdados2023_arq3 <- read_delim("microdados2023_arq3.txt", 
+    delim = ";", escape_double = FALSE, trim_ws = TRUE)
+
+install.packages("AER") #para usar função de VI
+library(AER) 
+
+2.
