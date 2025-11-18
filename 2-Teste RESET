@@ -1,18 +1,21 @@
 
-#Teste de Erro de especificação / forma funcional do modelo
+#Verificação se há omissão de variáveis ou não linearidade não capturada pelo modelo
+Objetivo: Entender o efeito causal do abuso de álcool (abuse) sobre empregabilidade (employ)
 
+#1-Importação de dados / pacotes
 library(lmtest) #para o teste reset
 
+#2-Definição do teste
 resettest(reg_simples, power = 2:3, type = "fitted")
 
 Onde, as hipóteses do teste são:
 H₀ (nula): o modelo está corretamente especificado (sem omissão de variáveis importantes, linearidade adequada)
 H₁ (alternativa): há erro de especificação (variáveis omitidas ou não linearidade)
 
-RESULTADO 
+#3-Resultado
 data:  reg_simples
 RESET = 0, df1 = 2, df2 = 9818, p-value = 1
 
-INTERPRETAÇÃO
+#4-Diagnóstico
 -Como p-valor é muito maior que 5, isso indica que não há evidência estatística de erro de especificação no modelo simples employ ~ abuse.
 -Mesmo sem erro de especificação estatístico, o efeito de abuse pode estar enviesado por variáveis omitidas (idade, educação, região, histórico familiar etc.).
