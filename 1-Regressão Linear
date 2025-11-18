@@ -2,25 +2,23 @@
 # Regressão Linear
 Objetivo: Entender o efeito causal do abuso de álcool (abuse) sobre empregabilidade (employ)
 
-# Etapas
-#1.Importando dados / pacotes
-  
+#1-Importação de dados / pacotes
 install.packages("wooldridge")
 library(wooldridge)
 
 install.packages("AER") #para usar função de VI
 library(AER) 
 
-#2. Definindo o modelo de regressão
-
 data('alcohol')
 
+#2-Definição o modelo de regressão
 #variável dependente / endógena = abuse (1 se a pessoa está empregada, 0 caso contrário)
 #variável independente / exógena = employ (se a pessoa abusa de álcool, 0 caso contrário)
 
 reg_simples <- lm(employ ~ abuse, data = alcohol )
 summary(reg_simples)
 
+#3-Resultado
 Call:
 lm(formula = employ ~ abuse, data = alcohol)
 
@@ -39,24 +37,24 @@ Residual standard error: 0.3023 on 9820 degrees of freedom
 Multiple R-squared:  0.0007826,	Adjusted R-squared:  0.0006809 
 F-statistic: 7.691 on 1 and 9820 DF,  p-value: 0.005559
 
-#3.Interpretando o resultado
+#4- Diagnósticos
 
-1-Intercepto (𝛽0)
+a) Intercepto (𝛽0)
 Estimate: 0.900995
 Isso significa que, para indivíduos que não abusam de álcool (abuse = 0), a probabilidade de estar empregado é aproximadamente 90,1%.
 Muito significativo (p < 2e-16), como esperado.
 
-2-Coeficiente de abuse (𝛽1)
+b) Coeficiente de abuse (𝛽1)
 Estimativa: -0.0283
 Isso significa que abusar de álcool reduz a probabilidade de estar empregado em 2,83 pontos percentuais em relação a quem não abusa.
 Significância estatística: p = 0.00556 → altamente significativo (nível 1%)
 Interpretação: existe uma relação negativa entre abuso de álcool e empregabilidade.
 
-3-R² e ajuste
+c) R² e ajuste
 R²: 0.00078 → muito baixo
 Indica que o modelo simples não explica quase nada da variação em empregabilidade, o que é esperado, já que estamos usando apenas uma variável explicativa.
 Erro padrão residual: 0.3023 → tamanho médio do erro.
 
-3-Teste F
+d) Teste F
 F = 7.691, p = 0.00556 → rejeitamos a hipótese nula de que o coeficiente de abuse é zero.
 Confirma a significância do efeito de abuso sobre empregabilidade.
