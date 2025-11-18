@@ -37,7 +37,7 @@ Residual standard error: 0.3023 on 9820 degrees of freedom
 Multiple R-squared:  0.0007826,	Adjusted R-squared:  0.0006809 
 F-statistic: 7.691 on 1 and 9820 DF,  p-value: 0.005559
 
-#4- Diagnósticos
+#4-Diagnóstico
 
 a) Intercepto (𝛽0)
 Estimate: 0.900995
