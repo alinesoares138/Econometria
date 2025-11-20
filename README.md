@@ -1,8 +1,5 @@
 # Econometria
-## Tópicos do projeto:
-1. Regressão Linear
-2. Teste RESET 
-3. Variáveis Instrumentais / 2SLS
+Este repositório reúne materiais de estudo e exercícios práticos em R sobre alguns pilares essenciais da econometria aplicada. Aqui, você encontrará explicações introdutórias, exemplos comentados e scripts que ajudam a consolidar o aprendizado.
 
 # Regressão Linear
 
@@ -42,7 +39,7 @@ Se esses termos forem significativos, há indícios de:
 
 Um resultado significativo sugere revisar a especificação, reavaliar transformações ou adicionar variáveis relevantes.
 
-# Variáveis Instrumentais / 2SLS
+# Variáveis Instrumentais 
 
 Quando um regressor é endógeno — isto é, correlacionado com o termo de erro — os estimadores de MQO tornam-se viesados e inconsistentes. Variáveis Instrumentais (IV) corrigem esse problema.
 
